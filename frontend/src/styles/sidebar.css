@@ -1,0 +1,351 @@
+/* =========================================================
+   MINEXPERT — INDUSTRIAL SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #111b24 0%,
+      #17232e 55%,
+      #111a22 100%
+    );
+
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 14px;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: 100;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 7px 10px 22px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #1d5f91;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(29, 95, 145, 0.25);
+}
+
+.sidebar-logo h2 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  letter-spacing: -0.2px;
+}
+
+.sidebar-logo span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 10px;
+
+  color: #81909d;
+
+  letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar-nav {
+  flex: 1;
+
+  padding-top: 18px;
+
+  overflow-y: auto;
+}
+
+.nav-title {
+  font-size: 9px;
+
+  font-weight: 700;
+
+  color: #657684;
+
+  letter-spacing: 1.3px;
+
+  padding: 0 12px;
+
+  margin: 20px 0 9px;
+}
+
+.nav-title:first-child {
+  margin-top: 0;
+}
+
+/* =========================================================
+   NAV ITEM
+========================================================= */
+
+.nav-item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 11px 12px;
+
+  margin-bottom: 3px;
+
+  border-radius: 7px;
+
+  color: #aebbc6;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+
+  color: #7f909e;
+
+  transition: color 0.2s ease;
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.055);
+
+  color: #ffffff;
+
+  transform: translateX(2px);
+}
+
+.nav-item:hover svg {
+  color: #c9d5df;
+}
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.nav-item.active {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(30, 111, 235, 0.9),
+      rgba(30, 111, 235, 0.72)
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(30, 111, 235, 0.18);
+}
+
+.nav-item.active svg {
+  color: #ffffff;
+}
+
+/* Small active indicator */
+
+.nav-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: -14px;
+
+  top: 8px;
+
+  bottom: 8px;
+
+  width: 3px;
+
+  border-radius: 0 3px 3px 0;
+
+  background: #62b5ff;
+}
+
+/* =========================================================
+   BOTTOM AREA
+========================================================= */
+
+.sidebar-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding-top: 15px;
+}
+
+/* =========================================================
+   ADMIN PROFILE
+========================================================= */
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 7px 8px;
+}
+
+.admin-avatar {
+  width: 35px;
+  height: 35px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #2b3b49;
+
+  border: 1px solid #405260;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #dce5eb;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.admin-info strong {
+  color: #e8edf1;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.admin-info span {
+  color: #71818e;
+
+  font-size: 9px;
+}
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.logout-btn {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: #8796a3;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 9px 12px;
+
+  margin-top: 7px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.055);
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #344653;
+
+  border-radius: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}

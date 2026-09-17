@@ -1,0 +1,550 @@
+/* =========================================================
+   INDUSTRIAL OPERATIONS BACKDROP
+========================================================= */
+
+.dashboard-page {
+  position: relative;
+  min-height: calc(100vh - 70px);
+}
+
+.dashboard-page::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -32px;
+
+  width: 420px;
+  height: 260px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(29, 95, 145, 0.10),
+      transparent 65%
+    );
+
+  clip-path: polygon(
+    35% 0,
+    100% 0,
+    100% 65%,
+    70% 100%,
+    0 100%,
+    15% 55%
+  );
+
+  pointer-events: none;
+}
+
+.dashboard-page::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -45px;
+
+  width: 320px;
+  height: 180px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(24, 128, 77, 0.05),
+      transparent 70%
+    );
+
+  clip-path: polygon(
+    0 35%,
+    25% 0,
+    100% 0,
+    80% 70%,
+    45% 100%,
+    0 100%
+  );
+
+  pointer-events: none;
+}
+
+/* Keep dashboard content above backdrop */
+
+.dashboard-heading,
+.stats-grid,
+.dashboard-charts-grid,
+.violations-panel {
+  position: relative;
+  z-index: 2;
+}
+/* =========================================================
+   MINEXPERT — GOVERNANCE DASHBOARD
+   Enterprise / Industrial UI
+========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.dashboard-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.dashboard-heading h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.dashboard-heading p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.date-filter {
+  height: 40px;
+  padding: 0 15px;
+
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #344054;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.date-filter:hover {
+  background: #f8fafc;
+  border-color: #b9c2d0;
+}
+
+/* =========================================================
+   KPI GRID
+========================================================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* =========================================================
+   KPI CARD
+========================================================= */
+
+.stat-card {
+  position: relative;
+
+  background: #ffffff;
+  border: 1px solid #e4e8ee;
+  border-radius: 10px;
+
+  padding: 20px;
+
+  min-height: 150px;
+
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.03),
+    0 4px 12px rgba(16, 24, 40, 0.03);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #d3dae5;
+
+  box-shadow:
+    0 4px 10px rgba(16, 24, 40, 0.05),
+    0 10px 25px rgba(16, 24, 40, 0.05);
+}
+
+/* =========================================================
+   KPI TOP
+========================================================= */
+
+.stat-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   KPI ICON
+========================================================= */
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+}
+
+.compliance-icon {
+  background: #e9f6ef;
+  color: #17824f;
+}
+
+.violation-icon {
+  background: #fff4df;
+  color: #b76a00;
+}
+
+.risk-icon {
+  background: #fff0e9;
+  color: #d35b2d;
+}
+
+.action-icon {
+  background: #eaf1ff;
+  color: #2764c7;
+}
+
+/* =========================================================
+   KPI CHANGE
+========================================================= */
+
+.stat-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  padding: 5px 8px;
+  border-radius: 20px;
+}
+
+.stat-change.positive {
+  background: #edf8f2;
+  color: #16804d;
+}
+
+.stat-change.negative {
+  background: #fff1ef;
+  color: #c74b42;
+}
+
+/* =========================================================
+   KPI TEXT
+========================================================= */
+
+.stat-label {
+  margin-bottom: 5px;
+
+  color: #667085;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-value {
+  color: #172033;
+
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.stat-description {
+  margin-top: 6px;
+
+  color: #98a2b3;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   CHART GRID
+========================================================= */
+
+.dashboard-charts-grid {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 18px;
+}
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.dashboard-panel {
+  background: #ffffff;
+
+  border: 1px solid #e4e8ee;
+  border-radius: 10px;
+
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.03),
+    0 4px 12px rgba(16, 24, 40, 0.03);
+}
+
+/* =========================================================
+   PANEL HEADER
+========================================================= */
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 19px 20px;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.panel-header h3 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.panel-header p {
+  margin: 5px 0 0;
+
+  color: #8a94a6;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   COMPLIANCE CHART
+========================================================= */
+
+.compliance-panel {
+  min-height: 350px;
+}
+
+.chart-container {
+  padding: 18px 18px 12px;
+}
+
+/* =========================================================
+   RISK CHART
+========================================================= */
+
+.risk-panel {
+  min-height: 350px;
+}
+
+.risk-chart-wrapper {
+  padding: 12px 16px 10px;
+}
+
+/* =========================================================
+   RECENT VIOLATIONS
+========================================================= */
+
+.violations-panel {
+  margin-bottom: 20px;
+}
+
+.view-all-btn {
+  border: 0;
+
+  background: transparent;
+
+  color: #1f6feb;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  text-decoration: underline;
+}
+
+.violations-list {
+  padding: 4px 20px;
+}
+
+.violation-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.violation-item:last-child {
+  border-bottom: none;
+}
+
+.violation-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.violation-info strong {
+  color: #344054;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.violation-info span {
+  color: #98a2b3;
+
+  font-size: 11px;
+}
+
+/* =========================================================
+   VIOLATION BADGES
+========================================================= */
+
+.violation-badge {
+  flex-shrink: 0;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.violation-badge.critical {
+  background: #fdecec;
+  color: #c73f3f;
+}
+
+.violation-badge.high {
+  background: #fff0e8;
+  color: #c75b29;
+}
+
+.violation-badge.medium {
+  background: #fff5d9;
+  color: #a66b00;
+}
+
+/* =========================================================
+   RECHARTS
+========================================================= */
+
+.recharts-text {
+  fill: #8a94a6;
+}
+
+.recharts-cartesian-grid-horizontal line {
+  stroke: #edf0f4;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .dashboard-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-heading h1 {
+    font-size: 25px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    min-height: 135px;
+  }
+
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-header {
+    padding: 17px;
+  }
+
+  .chart-container {
+    padding: 10px;
+  }
+
+  .risk-chart-wrapper {
+    padding: 8px;
+  }
+
+  .violations-list {
+    padding: 4px 17px;
+  }
+
+  .violation-item {
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,1034 @@
+/* =========================================================
+   MINEXPERT — VIOLATIONS & INCIDENT CONTROL
+========================================================= */
+
+.violations-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.violations-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.section-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: #6f8291;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+}
+
+.violations-heading h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.violations-heading p {
+  margin: 7px 0 0;
+  color: #667085;
+  font-size: 13px;
+}
+
+.filter-date-btn {
+  height: 36px;
+  padding: 0 15px;
+  border: 1px solid #d9e0e6;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #475467;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-date-btn:hover {
+  border-color: #aebdca;
+  background: #f8fafb;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.violation-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.violation-stat-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 145px;
+  padding: 18px 19px;
+  background: #ffffff;
+  border: 1px solid #e0e6eb;
+  border-radius: 10px;
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.03),
+    0 5px 14px rgba(16, 24, 40, 0.035);
+}
+
+.violation-stat-card::after {
+  content: "";
+  position: absolute;
+  right: -35px;
+  bottom: -50px;
+  width: 120px;
+  height: 120px;
+  border: 18px solid rgba(30, 95, 145, 0.035);
+  border-radius: 50%;
+}
+
+.violation-stat-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.violation-stat-icon {
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.total-icon {
+  background: #eaf2f8;
+  color: #286f9f;
+}
+
+.critical-stat-icon {
+  background: #fcecec;
+  color: #c43e3e;
+}
+
+.high-stat-icon {
+  background: #fff3df;
+  color: #b87800;
+}
+
+.resolved-stat-icon {
+  background: #e9f7f0;
+  color: #17784c;
+}
+
+.stat-status {
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.stat-status.neutral {
+  background: #eef2f5;
+  color: #647382;
+}
+
+.stat-status.critical {
+  background: #fdecec;
+  color: #bd4141;
+}
+
+.stat-status.high {
+  background: #fff4dc;
+  color: #9b6900;
+}
+
+.stat-status.resolved {
+  background: #e9f7f0;
+  color: #17784c;
+}
+
+.violation-stat-label {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin-bottom: 5px;
+  color: #7b8794;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.violation-stat-card > strong {
+  position: relative;
+  z-index: 2;
+  color: #172033;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.violation-stat-card > p {
+  position: relative;
+  z-index: 2;
+  margin: 5px 0 0;
+  color: #98a2b3;
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.violation-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 13px;
+  background: #ffffff;
+  border: 1px solid #e0e6eb;
+  border-radius: 9px;
+}
+
+.violation-search {
+  width: 320px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 11px;
+  background: #f7f9fb;
+  border: 1px solid #e1e6eb;
+  border-radius: 7px;
+  color: #8a96a3;
+}
+
+.violation-search:focus-within {
+  background: #ffffff;
+  border-color: #8bb6dc;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.07);
+}
+
+.violation-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #344054;
+  font-size: 11px;
+}
+
+.violation-search input::placeholder {
+  color: #98a2b3;
+}
+
+.filter-btn {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 13px;
+  border: 1px solid #dfe5ea;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #596878;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  background: #f7f9fb;
+  border-color: #c6d0d9;
+}
+
+
+/* =========================================================
+   CHART GRID
+========================================================= */
+
+.violation-charts-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.violation-panel {
+  background: #ffffff;
+  border: 1px solid #e0e6eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.03),
+    0 5px 14px rgba(16, 24, 40, 0.035);
+}
+
+.violation-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 19px 21px;
+  border-bottom: 1px solid #e9edf2;
+}
+
+.violation-panel-header h3 {
+  margin: 0;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.violation-panel-header p {
+  margin: 5px 0 0;
+  color: #8a96a3;
+  font-size: 10px;
+}
+
+.panel-period {
+  padding: 5px 8px;
+  background: #f1f5f8;
+  border-radius: 5px;
+  color: #667685;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.violation-chart {
+  width: 100%;
+  height: 285px;
+  padding: 15px 12px 10px 4px;
+}
+
+.category-chart {
+  width: 100%;
+  height: 285px;
+  padding: 15px 12px 10px 4px;
+}
+
+
+/* =========================================================
+   RECENT VIOLATIONS
+========================================================= */
+
+.recent-violations-panel {
+  margin-bottom: 25px;
+}
+
+.view-all-violations {
+  border: none;
+  background: transparent;
+  color: #1d6fa5;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.view-all-violations:hover {
+  color: #15547e;
+}
+
+.violations-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.violations-table-header,
+.violations-table-row {
+  display: grid;
+  grid-template-columns:
+    1fr
+    1.9fr
+    1fr
+    0.9fr
+    1fr
+    1fr
+    0.5fr;
+
+  align-items: center;
+  gap: 16px;
+  padding: 14px 21px;
+}
+
+.violations-table-header {
+  min-width: 950px;
+  background: #f7f9fb;
+  color: #7b8794;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.violations-table-row {
+  min-width: 950px;
+  min-height: 62px;
+  border-top: 1px solid #edf0f3;
+  transition: background 0.18s ease;
+}
+
+.violations-table-row:hover {
+  background: #fafcfd;
+}
+
+.violations-table-row > strong {
+  color: #263445;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.violations-table-row > span {
+  color: #667085;
+  font-size: 10px;
+}
+
+.violation-name {
+  color: #344054 !important;
+  font-weight: 600;
+}
+
+.reported-time {
+  color: #8793a0 !important;
+}
+
+
+/* =========================================================
+   SEVERITY BADGES
+========================================================= */
+
+.severity-badge {
+  width: fit-content;
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+}
+
+.severity-badge.critical {
+  background: #fdecec;
+  color: #bd4141 !important;
+}
+
+.severity-badge.high {
+  background: #fff4dc;
+  color: #9b6900 !important;
+}
+
+.severity-badge.medium {
+  background: #fff8e9;
+  color: #9b7400 !important;
+}
+
+.severity-badge.low {
+  background: #eaf5fb;
+  color: #286f9f !important;
+}
+
+
+/* =========================================================
+   INCIDENT STATUS
+========================================================= */
+
+.incident-status {
+  width: fit-content;
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+}
+
+.incident-status.open {
+  background: #fdecec;
+  color: #bd4141 !important;
+}
+
+.incident-status.under-review {
+  background: #fff4dc;
+  color: #9b6900 !important;
+}
+
+.incident-status.in-progress {
+  background: #eaf2f8;
+  color: #286f9f !important;
+}
+
+.incident-status.resolved {
+  background: #e9f7f0;
+  color: #17784c !important;
+}
+
+.view-violation-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe5ea;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #6f7d8a;
+  cursor: pointer;
+}
+
+.view-violation-btn:hover {
+  background: #f2f6f9;
+  border-color: #c5d0d9;
+  color: #1d6fa5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .violation-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .violation-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .violations-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .violation-filter-bar {
+    flex-wrap: wrap;
+  }
+
+  .violation-search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .violation-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .violation-panel-header {
+    padding: 17px;
+  }
+
+  .violation-chart,
+  .category-chart {
+    height: 250px;
+  }
+}
+/* =========================================================
+   FUNCTIONAL FILTER CONTROLS
+========================================================= */
+
+.filter-select {
+  height: 35px;
+  min-width: 125px;
+  padding: 0 30px 0 11px;
+
+  border: 1px solid #dfe5ea;
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #596878;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-select:hover {
+  background: #f7f9fb;
+  border-color: #c6d0d9;
+}
+
+.filter-select:focus {
+  border-color: #8bb6dc;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.07);
+}
+
+.reset-filter-btn {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+
+  border: 1px solid #dfe5ea;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #6f7d8a;
+
+  cursor: pointer;
+}
+
+.reset-filter-btn:hover {
+  background: #f2f6f9;
+  border-color: #c5d0d9;
+  color: #1d6fa5;
+}
+
+.filter-result {
+  margin: -10px 0 14px;
+  color: #7b8794;
+  font-size: 10px;
+}
+
+.filter-result strong {
+  color: #344054;
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-violations {
+  min-height: 190px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #98a2b3;
+}
+
+.no-violations svg {
+  margin-bottom: 3px;
+  color: #aeb9c3;
+}
+
+.no-violations strong {
+  color: #475467;
+  font-size: 13px;
+}
+
+.no-violations span {
+  font-size: 10px;
+}
+
+.no-violations button {
+  margin-top: 7px;
+  padding: 7px 12px;
+
+  border: 1px solid #d8e0e6;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #1d6fa5;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.no-violations button:hover {
+  background: #f3f7fa;
+}
+
+
+/* =========================================================
+   FILTER RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+  .filter-select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .reset-filter-btn {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-select {
+    width: 100%;
+  }
+
+  .reset-filter-btn {
+    width: 100%;
+  }
+}
+/* =====================================================
+   VIOLATION DETAILS MODAL
+===================================================== */
+
+.violation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 18, 25, 0.72);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 9999;
+  animation: modalOverlayIn 0.2s ease;
+}
+
+.violation-modal {
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #dfe5ea;
+  border-radius: 12px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  animation: modalIn 0.25s ease;
+}
+
+
+/* =====================================================
+   MODAL HEADER
+===================================================== */
+
+.violation-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 26px 18px;
+  border-bottom: 1px solid #e7ebef;
+}
+
+.modal-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: #5f7484;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.violation-modal-header h2 {
+  margin: 0;
+  color: #172633;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+
+.violation-modal-header p {
+  margin: 6px 0 0;
+  color: #74818c;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal-close-btn {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1px solid #dfe5ea;
+  border-radius: 7px;
+  background: #f7f9fa;
+  color: #667681;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: #edf1f4;
+  color: #172633;
+  border-color: #cbd4da;
+}
+
+
+/* =====================================================
+   MODAL STATUS
+===================================================== */
+
+.modal-status-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 18px 26px 4px;
+}
+
+
+/* =====================================================
+   MODAL DETAILS
+===================================================== */
+
+.violation-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 18px 26px;
+}
+
+.detail-item {
+  padding: 14px 15px;
+  background: #f6f8fa;
+  border: 1px solid #e3e8ec;
+  border-radius: 8px;
+}
+
+.detail-item span {
+  display: block;
+  margin-bottom: 6px;
+  color: #7a8792;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.detail-item strong {
+  color: #253642;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.violation-description {
+  margin: 0 26px;
+  padding: 18px 0;
+  border-top: 1px solid #e7ebef;
+}
+
+.violation-description h3 {
+  margin: 0 0 8px;
+  color: #253642;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.violation-description p {
+  margin: 0;
+  color: #687783;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.violation-description strong {
+  color: #334b5b;
+}
+
+
+/* =====================================================
+   CORRECTIVE ACTION
+===================================================== */
+
+.corrective-action-box {
+  margin: 0 26px 20px;
+  padding: 16px 17px;
+  background: #f3f7fa;
+  border: 1px solid #d9e4eb;
+  border-left: 4px solid #3d7da8;
+  border-radius: 8px;
+}
+
+.corrective-action-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  color: #285b7c;
+  font-size: 12px;
+}
+
+.corrective-action-title svg {
+  flex-shrink: 0;
+}
+
+.corrective-action-box p {
+  margin: 0;
+  color: #647581;
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+
+/* =====================================================
+   MODAL FOOTER
+===================================================== */
+
+.violation-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 17px 26px;
+  background: #f8fafb;
+  border-top: 1px solid #e7ebef;
+  border-radius: 0 0 12px 12px;
+}
+
+.modal-secondary-btn,
+.modal-primary-btn {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-secondary-btn {
+  background: #ffffff;
+  border: 1px solid #d8e0e5;
+  color: #62717c;
+}
+
+.modal-secondary-btn:hover {
+  background: #f0f3f5;
+  border-color: #c6d0d6;
+}
+
+.modal-primary-btn {
+  background: #285f82;
+  border: 1px solid #285f82;
+  color: #ffffff;
+}
+
+.modal-primary-btn:hover {
+  background: #214f6d;
+  border-color: #214f6d;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   MODAL ANIMATIONS
+===================================================== */
+
+@keyframes modalOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =====================================================
+   MODAL SCROLLBAR
+===================================================== */
+
+.violation-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.violation-modal::-webkit-scrollbar-track {
+  background: #f1f4f6;
+}
+
+.violation-modal::-webkit-scrollbar-thumb {
+  background: #c5ced5;
+  border-radius: 10px;
+}
+
+
+/* =====================================================
+   MODAL RESPONSIVE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .violation-modal-overlay {
+    padding: 12px;
+  }
+
+  .violation-modal {
+    max-height: 94vh;
+  }
+
+  .violation-modal-header {
+    padding: 20px;
+  }
+
+  .violation-modal-header h2 {
+    font-size: 18px;
+  }
+
+  .modal-status-row {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .violation-details-grid {
+    grid-template-columns: 1fr;
+    padding: 16px 20px;
+  }
+
+  .violation-description {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .corrective-action-box {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .violation-modal-footer {
+    padding: 15px 20px;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .modal-secondary-btn,
+  .modal-primary-btn {
+    width: 100%;
+  }
+}
